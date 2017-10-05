@@ -29,10 +29,11 @@
   <ul>
   @forelse($post->comments as $comment)
     <li>
-    <h6>{!! nl2br(e($comment->body)) !!}</h6>
+    <h5>{!! nl2br(e($comment->body)) !!}</h5>
       <form action="{{ action('CommentsController@destroy' , [$post->id , $comment->id]) }}" id="form_{{ $comment->id }}" method="post" style="display:inline">
       {{ csrf_field() }}
       {{ method_field('delete') }}
+      <h6>投稿日時：{{ $comment->created_at }}</h6>
       <a href="#" data-id="{{ $comment->id }}" onclick="deleteComment(this);" class="fs12">
         <button type="button" class="btn btn-danger btn-xs">
           Delete
